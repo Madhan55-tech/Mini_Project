@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    crossorigin="anonymous">
+    {% load static %}
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <style>
+        .content{
+            background-image: url("{% static 'images/login.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0%;
+            color: white;
+        }
+        .frm{
+            color: white;
+        }
+        .ta{
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%,-50%);
+            font-size: 200%;
+        }
+        #bu{
+            position: absolute;
+            left: 50%;
+            top: 150%;
+            transform: translate(-50%,-50%);
+        }
+        .te{
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            transform: translate(-50%,-50%);
+            font-size: 400%;
+        }
+        .p{
+          position: absolute;
+            left: 35%;
+            top: 120%;
+            transform: translate(-50%,-50%);
+            font-size: 55%;
+            color: blue;
+        }
+        .error-message,.pk {
+            color: red;
+            font-size: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <nav class="navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand text-secondary" href="#">LOGIN</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">SELECT</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                      <a class="nav-link active text-primary" aria-current="page" href="{% url 'base' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active text-primary" aria-current="page" href="{% url 'signup' %}">SIGNUP</a>
+                    </li>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </div>
+    <div class="content">
+        <header class="te"><b>Login !</b></header>
+    </div>  
+    <div class="frm">  
+        <header class="ta">
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+                UserName<br>
+                <input type="text" title="UserName" name="unm"><br>
+                Password<br>
+                <input type="password" title="password" name="ps"><br>
+                {% if ERROR %}
+                <p class="pk">{{ ERROR }}</p>
+                {% endif %}
+                <button type="submit" class="btn btn-success btn-lg" id="bu">LOGIN</button>
+            </form>
+
+            {% if error %}
+            <p class="error-message">{{ error }}</p>
+            {% endif %}
+    
+    <p class="p">
+        Don't have an account?Go to Signup Page through navbar</a>
+    </p>
+        </header>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+    crossorigin="anonymous"></script>
+</body>
+</html>
